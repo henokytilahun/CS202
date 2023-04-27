@@ -1,0 +1,3 @@
+/home/henok/CLionProjects/worksheet12/cmake-build-debug/CMakeFiles/worksheet12.dir
+/home/henok/CLionProjects/worksheet12/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/henok/CLionProjects/worksheet12/cmake-build-debug/CMakeFiles/rebuild_cache.dir
