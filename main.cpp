@@ -44,23 +44,72 @@ void stackArray::push(int value){
         tail = temp;
     }
 }
-void stackArray::pop(){
+
+
+
+//void singlyLL::delete_at_tail(){
+//    Node *currentptr, *prev;
+//    if(head==nullptr){
+//        cout<<"No nodes to delete- tail()"<<endl;
+//        return;
+//    }
+//    if(head->next == nullptr){
+//        currentptr = head;
+//        head = nullptr;
+//        delete currentptr;
+//        return;
+//    }
+//    currentptr = head;
+//    while(currentptr->next != nullptr){
+//        prev = currentptr;
+//        currentptr = currentptr->next;
+//    }
+//    prev->next = nullptr;
+//    delete currentptr;
+//}
+
+
+void stackArray::pop() {
+    Node *currentptr, *prev;
     if(isEmpty()){
         cout << "Linked List is Empty (Pop Function)\n";
         return;
     }
-    Node *currentptr = top;
-    Node *ptr = top;
-
-    while(currentptr->next != nullptr){
-        ptr= currentptr;
-        currentptr= currentptr->next;
+    if(top->next == nullptr){
+        currentptr = top;
+        top = nullptr;
+        delete currentptr;
+        return;
     }
-
-    tail = ptr;
-    ptr->next = nullptr;
+    currentptr = top;
+    while(currentptr->next != nullptr){
+        prev = currentptr;
+        currentptr = currentptr->next;
+    }
+    prev->next = nullptr;
     delete currentptr;
 }
+
+
+
+
+//void stackArray::pop(){
+//    if(isEmpty()){
+//        cout << "Linked List is Empty (Pop Function)\n";
+//        return;
+//    }
+//    Node *currentptr = top;
+//    Node *ptr = top;
+//
+//    while(currentptr->next != nullptr){
+//        ptr= currentptr;
+//        currentptr= currentptr->next;
+//    }
+//
+//    tail = ptr;
+//    ptr->next = nullptr;
+//    delete currentptr;
+//}
 void stackArray::printStackArray(){
     if(isEmpty()){
         cout << "Linked List is Empty (Print Function)\n";
@@ -183,6 +232,7 @@ int main() {
     stack.pop();
     stack.pop();
     stack.pop();
+    stack.pop();
     cout << "\n\n------------------ Testing Swap ------------------\n";
     cout << "Test 1 (Same Swap Positions):          ";
     stack.swapPositions(1,1);
@@ -190,15 +240,15 @@ int main() {
     stack.swapPositions(7,8);
 //    stack.swapPositions(5,7); //crashes when position 0-5 on either
 
-
-
     cout << "\n------------------ Testing Sort ------------------\n";
     cout << "Test 1 (Sort Values from Stack):       ";
-    stack.push(2);
+    stack.push(12);
     stack.push(5);
     stack.push(-12);
     stack.push(19);
     stack.push(-5);
+
+    stack.printStackArray();
     stack.sortStackArray(arr, size);
 
     return 0;
