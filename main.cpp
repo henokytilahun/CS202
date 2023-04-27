@@ -119,7 +119,32 @@ void stackArray::swapPositions(int position1, int position2){
     return;
 }
 void stackArray::sortStackArray(int arr[], int size){
+    if(isEmpty()){
+        cout << "Linked List is Empty (Sort Function)\n";
+        return;
+    }
+    Node *currentptr = top;
+    int count = 0;
+    while(currentptr->next != nullptr){
+        arr[count] = currentptr->data;
+        currentptr->next;
+    }
+    arr[count+1] = tail->data;
 
+    for(int i = 0; i < size-1; i++){
+        for(int j = 0; j < size-i-1; j++){
+            if(arr[j] > arr[j+1]){
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+
+    for(int i = 0; i < size; i++){
+        cout << arr[i] << " ";
+    }
+    cout << "\n";
 }
 
 
@@ -135,7 +160,13 @@ stackArray::~stackArray(){
 int main() {
 
     stackArray stack;
-    cout << "------------------ Testing Push ------------------\n";
+    int const size = 6;
+    int arr[size] = {1,2,3,4,5,6};
+    cout << "------------------ Testing isEmpty() ------------------\n";
+    stack.pop();
+    stack.swapPositions(1,2);
+    stack.sortStackArray(arr, size);
+    cout << "\n------------------ Testing Push ------------------\n";
     cout << "Test 1 (Pushing 3 Values):           ";
     stack.push(1);
     stack.push(2);
@@ -162,8 +193,9 @@ int main() {
 
 
 
-//    cout << "\n------------------ Testing Sort ------------------\n";
-
+    cout << "\n------------------ Testing Sort ------------------\n";
+    cout << "Test 1 (Sort Values from Stack):       ";
+    stack.sortStackArray(arr, size);
 
     return 0;
 }
