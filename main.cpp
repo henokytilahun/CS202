@@ -71,7 +71,7 @@ void stackArray::printStackArray(){
         cout << currentptr->data << " ";
         currentptr = currentptr->next;
     }
-    cout << tail->data;
+    cout << currentptr->data;
     cout << "\n";
 }
 void stackArray::swapPositions(int position1, int position2){
@@ -123,11 +123,13 @@ void stackArray::sortStackArray(int arr[], int size){
         cout << "Linked List is Empty (Sort Function)\n";
         return;
     }
+
     Node *currentptr = top;
     int count = 0;
     while(currentptr->next != nullptr){
         arr[count] = currentptr->data;
-        currentptr->next;
+        count++;
+        currentptr = currentptr->next;
     }
 
     for(int i = 0; i < size-1; i++){
@@ -146,7 +148,6 @@ void stackArray::sortStackArray(int arr[], int size){
     cout << "\n";
 }
 
-
 stackArray::~stackArray(){
     while(top != nullptr){
         Node *currentptr = top;
@@ -157,10 +158,9 @@ stackArray::~stackArray(){
 }
 
 int main() {
-
     stackArray stack;
     int const size = 6;
-    int arr[size] = {5,4,3,2,1,0};
+    int arr[size] = {0,0,0,0,0,0};
     cout << "------------------ Testing isEmpty() ------------------\n";
     stack.pop();
     stack.swapPositions(1,2);
@@ -176,14 +176,14 @@ int main() {
     stack.push(5);
     stack.printStackArray();
     cout << "\n------------------ Testing Pop ------------------\n";
-    cout << "Test 1 (Popping 1 Value):           ";
+    cout << "Test 1 (Popping 1 Value):             ";
     stack.pop();
     stack.printStackArray();
-    cout << "Test 2 (Popping Till Empty):           ";
+    cout << "Test 2 (Popping Till Empty):          ";
     stack.pop();
     stack.pop();
     stack.pop();
-    cout << "\n------------------ Testing Swap ------------------\n";
+    cout << "\n\n------------------ Testing Swap ------------------\n";
     cout << "Test 1 (Same Swap Positions):          ";
     stack.swapPositions(1,1);
     cout << "Test 2 (Positions Out of Bound):       ";
@@ -194,6 +194,11 @@ int main() {
 
     cout << "\n------------------ Testing Sort ------------------\n";
     cout << "Test 1 (Sort Values from Stack):       ";
+    stack.push(2);
+    stack.push(5);
+    stack.push(-12);
+    stack.push(19);
+    stack.push(-5);
     stack.sortStackArray(arr, size);
 
     return 0;
