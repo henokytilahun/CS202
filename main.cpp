@@ -136,19 +136,29 @@ int main() {
 
     stackArray stack;
     cout << "------------------ Testing Push ------------------\n";
+    cout << "Test 1 (Pushing 3 Values):           ";
     stack.push(1);
     stack.push(2);
     stack.push(3);
+    stack.printStackArray();
+    cout << "Test 2 (Pushing 2 More Values):       ";
     stack.push(4);
     stack.push(5);
     stack.printStackArray();
     cout << "\n------------------ Testing Pop ------------------\n";
+    cout << "Test 1 (Popping 1 Value):           ";
     stack.pop();
     stack.printStackArray();
-
+    cout << "Test 2 (Popping Till Empty):           ";
+    stack.pop();
+    stack.pop();
+    stack.pop();
     cout << "\n------------------ Testing Swap ------------------\n";
-//    stack.swapPositions(1,1);
-    stack.swapPositions(5,7);
+    cout << "Test 1 (Same Swap Positions):          ";
+    stack.swapPositions(1,1);
+    cout << "Test 2 (Positions Out of Bound):       ";
+    stack.swapPositions(7,8);
+//    stack.swapPositions(5,7); //crashes when position 0-5 on either
 
 
 
