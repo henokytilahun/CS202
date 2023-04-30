@@ -45,30 +45,6 @@ void stackArray::push(int value){
     }
 }
 
-
-
-//void singlyLL::delete_at_tail(){
-//    Node *currentptr, *prev;
-//    if(head==nullptr){
-//        cout<<"No nodes to delete- tail()"<<endl;
-//        return;
-//    }
-//    if(head->next == nullptr){
-//        currentptr = head;
-//        head = nullptr;
-//        delete currentptr;
-//        return;
-//    }
-//    currentptr = head;
-//    while(currentptr->next != nullptr){
-//        prev = currentptr;
-//        currentptr = currentptr->next;
-//    }
-//    prev->next = nullptr;
-//    delete currentptr;
-//}
-
-
 void stackArray::pop() {
     Node *currentptr, *prev;
     if(isEmpty()){
@@ -180,8 +156,9 @@ void stackArray::sortStackArray(int arr[], int size){
         count++;
         currentptr = currentptr->next;
     }
+    arr[count] = currentptr->data;
 
-    for(int i = 0; i < size-1; i++){
+    for(int i = 0; i < size; i++){
         for(int j = 0; j < size-i-1; j++){
             if(arr[j] > arr[j+1]){
                 int temp = arr[j];
@@ -208,8 +185,8 @@ stackArray::~stackArray(){
 
 int main() {
     stackArray stack;
-    int const size = 6;
-    int arr[size] = {0,0,0,0,0,0};
+    int const size = 5;
+    int arr[size] = {0,0,0,0,0};
     cout << "------------------ Testing isEmpty() ------------------\n";
     stack.pop();
     stack.swapPositions(1,2);
@@ -240,6 +217,8 @@ int main() {
     stack.swapPositions(7,8);
 //    stack.swapPositions(5,7); //crashes when position 0-5 on either
 
+
+
     cout << "\n------------------ Testing Sort ------------------\n";
     cout << "Test 1 (Sort Values from Stack):       ";
     stack.push(12);
@@ -247,8 +226,6 @@ int main() {
     stack.push(-12);
     stack.push(19);
     stack.push(-5);
-
-    stack.printStackArray();
     stack.sortStackArray(arr, size);
 
     return 0;
